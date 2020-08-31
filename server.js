@@ -1,16 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
+const questions = require('./questions');
 
-// const questions = []
 
 inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'title',
-      message: 'What is your project title?'
-    }
-  ])
+  .prompt(questions)
   .then(answers => console.log(answers))
   .catch(err => { throw err });
