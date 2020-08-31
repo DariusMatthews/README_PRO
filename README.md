@@ -1,5 +1,9 @@
 # README PRO GENERATOR
 
+## Description
+
+A Node js command line application that generates a professionally styled README.
+
 ## User Story
 
 ```
