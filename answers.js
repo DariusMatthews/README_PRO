@@ -3,16 +3,15 @@ const path = require('path');
 
 // Generating README
 const readMe = ({ title, desc, install, usage, contributing, license, github, email }) => {
-  // get different shield based on license
   let sheild = '';
+  // get different shield based on license
   if (license === 'GPLv3') {
-    shield = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
+    sheild = '[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)';
   } else if (license === 'MIT') {
-    shield = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-  } else {
-    shield = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)'
+    sheild = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+  } else if (license === 'ISC') {
+    sheild = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)';
   }
-  console.log(license, sheild);
 
   // README content
   const content = `# ${title}
@@ -56,7 +55,7 @@ const readMe = ({ title, desc, install, usage, contributing, license, github, em
   fs.mkdirSync(path.join(__dirname, 'created'), err => { if (err) throw err });
 
   // Create README.md file in Created folder
-  fs.writeFile(path.join(`${__dirname}/created`, 'README.md'), content, err => {
+  fs.writeFileSync(path.join(`${__dirname}/created`, 'README.md'), content, err => {
     if (err) throw err;
     console.log('README Created!');
   });
