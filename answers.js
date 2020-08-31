@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 // Generating README
 const readMe = ({ title, desc, install, usage, contribution, license, github, email }) => {
@@ -13,47 +14,47 @@ const readMe = ({ title, desc, install, usage, contribution, license, github, em
   }
 
   // README content
-  const content =
-    `
-      # ${title} ${sheild}
+  const content = `# ${title} ${sheild}
 
-      ## Description
+  ## Description
 
-      ${desc}
+  ${desc}
 
-      ## Table of Contents
+  ## Table of Contents
 
-      * [Installation] (#installation)
-      * [Usage] (#usage)
-      * [Contributions] (#contributions)
-      * [Questions] (#questions)
-      * [License] (#license)
-      
-      ## Installation
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Contributions](#contributions)
+  * [Questions](#questions)
+  * [License](#license)
+    
+  ## Installation
 
-      ${install}
+  ${install}
 
-      ## Usage
+  ## Usage
 
-      ${usage}
+  ${usage}
 
-      ## Contributors
+  ## Contributors
 
-      ${contribution}
+  ${contribution}
 
-      ## Questions
+  ## Questions
 
-      Follow my [github](https://github.com/${github}).
+  Follow my [github](https://github.com/${github}).
 
-      Email me [here](mailto:${email}?subject=[github%20-${title}]).
+  Email me [here](mailto:${email}?subject=[github%20-${title}]).
 
-      ## License
+  ## License
 
-      Licensed under the ${license} license.
-    `;
+  Licensed under the ${license} license.`
+
+  // make Created Directory
+  fs.mkdir(path.join(__dirname, 'created'), err => { if (err) throw err });
 
   // Create README.md file in Created folder
-  fs.writeFile(`${__dirname}/created/README.md`, content, err => {
+  fs.writeFile(path.join(`${__dirname}/created`, 'README.md'), content, err => {
     if (err) throw err;
     console.log('README Created!');
   });
