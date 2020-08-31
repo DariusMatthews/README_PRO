@@ -1,10 +1,9 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
 const questions = require('./questions');
+const readMe = require('./answers');
 
-
+// Running CLI to create README
 inquirer
   .prompt(questions)
-  .then(answers => console.log(answers))
+  .then(answers => readMe(answers))
   .catch(err => { throw err });
